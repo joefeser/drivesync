@@ -100,7 +100,9 @@ namespace DriveSync
                             try
                             {
                                 Console.WriteLine("Copy existing File:" + info.FullName);
-                                info.CopyTo(dest.FullName + @"\" + info.Name, true);
+                                var file = dest.FullName + @"\" + info.Name;
+                                File.Delete(file);
+                                info.CopyTo(file, true);
                             }
                             catch (Exception fileException)
                             {
